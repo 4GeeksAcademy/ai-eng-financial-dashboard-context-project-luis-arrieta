@@ -78,3 +78,18 @@ export function formatCurrency(value: number): string {
 export function formatPercent(value: number): string {
   return `${value.toFixed(1)}%`;
 }
+
+export function formatPeriodLabel(movements: FinancialMovement[]): string {
+  if (movements.length === 0) {
+    return "No data";
+  }
+
+  const dates = movements
+    .map((movement) => new Date(movement.create_date))
+    .sort((a, b) => a.getTime() - b.getTime());
+
+  const firstYear = dates[0].getFullYear();
+  const lastYear = dates[dates.length - 1].getFullYear();
+
+  return firstYear === lastYear ? `${firstYear}` : `${firstYear} - ${lastYear}`;
+}
