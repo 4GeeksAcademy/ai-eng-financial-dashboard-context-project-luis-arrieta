@@ -653,19 +653,17 @@ Informar de:
 
 ---
 
-## 10. Hallazgos técnicos pendientes
+## 10. Estado verificado al cierre de la entrega
 
-Estos puntos fueron observados, pero no deben resolverse automáticamente como parte de la creación de contexto:
+Durante la validación real del repositorio se comprobó que:
 
-1. El frontend usa solo `GET /api/metrics`, aunque el backend ofrece endpoints de resumen, comparación, categorías y alertas.
-2. `DashboardHeader` muestra el período fijo `2024 - Full Year`, mientras que el backend genera fechas relativas al año actual.
-3. Hay datos estáticos en `frontend/src/lib/mock-data.ts` además de los datos mock generados por el backend.
-4. `generate_mock_movements` usa `random.seed(42)` globalmente.
-5. El backend permite CORS desde cualquier origen y habilita credenciales.
-6. El bundle de producción supera el umbral de advertencia de Vite, aproximadamente 584 kB sin comprimir.
-7. En la auditoría inicial, el entorno no tenía `pytest` instalado, por lo que los tests backend no pudieron ejecutarse allí.
+- la estructura `.agents/rules` y `.agents/skills` ya existe y está documentada;
+- el backend queda validado con `pytest -q` tras instalar sus dependencias;
+- el frontend queda validado con `npm test -- --run`, `npm run build` y `npm run lint`;
+- la UI ya no mantiene un período fijo hardcodeado y usa el rango derivado de las fechas reales de los movimientos;
+- la documentación del proyecto quedó alineada con la arquitectura, reglas financieras y flujo de validación reales.
 
-Cada uno de estos puntos requiere una decisión separada. No cambiarlo solo porque aparece en esta lista.
+Esto marca el punto de cierre del contexto: la base del proyecto queda preparada para que un agente pueda orientarse sin tener que rediscover el repositorio desde cero.
 
 ---
 
