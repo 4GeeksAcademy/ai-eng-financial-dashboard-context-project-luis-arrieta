@@ -18,6 +18,15 @@ This skill helps an agent work efficiently in the Financial Metrics Dashboard pr
 - Calculations: `frontend/src/lib/financial-utils.ts`
 - Backend tests: `backend/tests/test_routes.py`
 
+## Choose a specialized skill
+Use this overview skill to route the task, then follow the most specific workflow:
+
+- Adding a KPI, aggregate, derived value, or chart metric: `.agents/skills/add-financial-metric/SKILL.md`
+- Adding or changing an endpoint, filter, aggregation, or API response: `.agents/skills/extend-financial-api/SKILL.md`
+- Running the final test, build, lint, and integration checks: `.agents/skills/validate-financial-dashboard/SKILL.md`
+
+If a change crosses these areas, apply the relevant implementation skill first and finish with `validate-financial-dashboard`.
+
 ## Typical tasks
 - Add or adjust a KPI or summary calculation
 - Add a new endpoint or filter
