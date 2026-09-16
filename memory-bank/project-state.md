@@ -2,19 +2,13 @@
 
 Actualizado: 2026-09-16.
 
-## Arquitectura actual
+## Funcionalidades comprobadas
 
-- Frontend: React, TypeScript, Vite, Tailwind CSS y Recharts.
-- Backend: FastAPI y Pydantic.
-- Fuente de datos: movimientos mock generados en backend con `seed=42`.
-- Ejecucion integrada: Docker Compose, frontend en `5173` y backend en `8000`.
-
-## Flujo de datos
-
-1. `frontend/src/App.tsx` solicita `GET /api/metrics`.
-2. `backend/app/routes.py` genera, filtra y ordena movimientos financieros.
-3. `frontend/src/lib/financial-utils.ts` calcula KPIs, datos mensuales y etiqueta de periodo.
-4. Los componentes de `frontend/src/components/dashboard/` presentan KPIs y graficos.
+- El backend publica `GET /health` y ocho endpoints bajo `/api/metrics` mediante el router de `backend/app/routes.py`.
+- `frontend/src/App.tsx` consulta `GET /api/metrics` y presenta KPIs y graficos derivados de los movimientos recibidos.
+- La UI contempla carga, error y ausencia de datos.
+- Los movimientos mock se generan con `seed=42` en las rutas; los filtros de fecha usan limites inclusivos.
+- Las pruebas actuales cubren rutas backend y utilidades financieras frontend.
 
 ## Responsabilidades
 
@@ -33,3 +27,12 @@ Actualizado: 2026-09-16.
 - Fechas de filtros son inclusivas.
 - El codigo real, tests y OpenAPI son la referencia funcional. No inventar campos desde documentacion.
 - No almacenar secretos, archivos `.env` reales ni artefactos generados.
+
+## Gaps y limites conocidos
+
+- `generate_mock_movements` usa `date.today()` ademas de `seed=42`; los valores aleatorios son repetibles, pero los anos de los datos cambian con el calendario.
+- La UI solo consume `/api/metrics`, aunque el backend publica endpoints para facets, summary, categorias, comparacion, alertas y segmentos B2B/B2C.
+- CORS permite cualquier origen con credenciales en `backend/app/main.py`; esta configuracion debe tratarse como local hasta que existan requisitos de despliegue.
+- Las pruebas existentes no incluyen archivos de pruebas de componentes o fetch de la interfaz; no se debe inferir cobertura de integracion frontend.
+
+No hay prioridades futuras registradas porque el repositorio no justifica un roadmap.

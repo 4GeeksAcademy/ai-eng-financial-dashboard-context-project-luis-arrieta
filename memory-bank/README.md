@@ -4,15 +4,18 @@ Este directorio conserva hechos operativos verificados que ayudan a otro agente 
 
 ## Fuente de verdad
 
+- Contexto de entrega: `financial-dashboard.md`.
 - Requisitos y flujo de trabajo: `AGENTS.md`, `.agents/rules/` y `.agents/skills/`.
 - Implementacion y contratos: codigo actual, tests y esquema OpenAPI de FastAPI.
 - Reglas y procedimientos reutilizables: `.agents/rules/` y `.agents/skills/`.
 
-No usar documentacion historica eliminada ni inferir campos de API. Si una nota contradice el codigo, actualizar o eliminar la nota y priorizar el codigo, los tests y OpenAPI.
+No inferir campos de API, funcionalidades de producto ni roadmaps. Si una nota contradice el codigo, actualizar o eliminar la nota y priorizar el codigo, los tests y OpenAPI.
 
 ## Notas
 
-- `project-state.md`: arquitectura, responsabilidades y decisiones vigentes.
+- `product-overview.md`: comportamiento visible y flujo de datos comprobados.
+- `stack.md`: lenguajes, frameworks, tooling, infraestructura y comandos reales.
+- `project-state.md`: funcionalidades comprobadas, gaps y decisiones vigentes.
 - `api-contract.md`: endpoints, modelos y parametros confirmados en `backend/app/routes.py` y OpenAPI.
 - `validation.md`: comandos y resultados de validacion conocidos.
 

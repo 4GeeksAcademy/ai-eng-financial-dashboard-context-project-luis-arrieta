@@ -20,6 +20,7 @@ docker compose up --build
 - Backend tests: 15 pruebas correctas.
 - Docker Compose: frontend y backend construyeron y arrancaron correctamente.
 - Integracion HTTP: `/health`, `/api/metrics`, `/docs` y `http://localhost:5173/` respondieron con exito.
+- La Fase 3 valido `docker compose build` despues de anadir exclusiones de contexto para frontend y backend.
 
 ## Comprobaciones obligatorias antes de cerrar un cambio
 
@@ -33,3 +34,4 @@ docker compose up --build
 
 - El build de Vite informa que el bundle JavaScript supera 500 kB; no bloquea la compilacion.
 - Pytest emite una advertencia de deprecacion de Starlette TestClient con `httpx`; los tests siguen pasando.
+- La verificacion de handover, hallazgos y prueba de reglas esta registrada en `verification.md`.

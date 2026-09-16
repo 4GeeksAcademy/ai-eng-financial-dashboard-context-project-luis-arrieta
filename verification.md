@@ -92,3 +92,12 @@ Each rule now includes scope, repository evidence, actionable workflow, restrict
 - Docker reported a frontend build context of `2.00 kB` and a backend context of `1.24 kB` after the exclusions.
 - Both `COPY . .` Dockerfile steps completed and both images were built.
 - The trial did not add product features, change API contracts, or alter dashboard presentation.
+
+## Phase 4: Project Memory Bank
+
+Date: 2026-09-16.
+
+- Rebuilt `memory-bank/` around a product overview, technical stack, verified project state, API contract, and validation record.
+- Verified every cited repository path and confirmed the API route count remains 9.
+- Recorded observed limitations only: mock data, calendar-dependent mock years, UI consumption limited to `/api/metrics`, open development CORS, and missing frontend component/fetch tests.
+- Excluded product roadmaps and unverified feature plans because the repository provides no evidence for them.
