@@ -46,3 +46,24 @@ cd backend && pytest -q
 - API field names must be derived from Pydantic models and FastAPI OpenAPI, not inferred from UI labels.
 - Frontend calculations and backend aggregates both encode financial semantics; future changes must inspect both layers.
 - Runtime health is not claimed by this document until the relevant command is executed and recorded.
+
+## Phase 2: Engineering Findings
+
+Date: 2026-09-16.
+
+| Category | Repository fact | Risk for future work | Proposed rule |
+| --- | --- | --- | --- |
+| Architecture | `backend/app/routes.py` defines Pydantic models, helpers, and all API routes; `backend/app/main.py` only creates the application and includes the router. | Route, model, or calculation changes can be made in the wrong layer. | Treat `routes.py` as the owner of API contracts and financial server calculations; keep application wiring in `main.py`. |
+| API contract | Route decorators declare `response_model` values using `FinancialMovement`, `MetricsFacets`, `MetricsSummaryItem`, `TopCategoryItem`, `MetricsComparison`, and `MetricsAlert`. | UI labels or untyped assumptions can introduce response fields not published by FastAPI. | Derive API field names and allowed values from Pydantic models and OpenAPI; update frontend types and tests with every contract change. |
+| Financial domain | `filter_movements_by_date` uses `>=` and `<=`; backend and frontend calculate income, outcome, and profit separately. | A duplicate or altered formula can make KPIs disagree with API aggregates or make date boundaries exclusive. | Reuse filtering helpers and preserve positive movement amounts, inclusive dates, and zero-income margin behavior. |
+| Determinism | API routes call `generate_mock_movements(seed=42)`, while the generator also uses `date.today()`. | Random values are repeatable, but calendar years shift as time passes. | Preserve `seed=42` for route behavior and avoid date-dependent assertions unless the test supplies or controls the current date. |
+| Frontend | `frontend/src/App.tsx` owns data fetching, loading, and error state; `frontend/src/lib/financial-utils.ts` owns KPI and monthly transformations. | Moving calculations into chart or card components would duplicate business logic and make unit testing harder. | Keep presentation in `components/dashboard/`, data orchestration in `App.tsx`, and reusable calculations in `financial-utils.ts`. |
+| Testing | `backend/tests/test_routes.py` exercises route behavior and inclusive dates; `frontend/src/lib/financial-utils.test.ts` exercises financial utility behavior. | API changes can pass one layer while breaking the other, especially when names or formulas drift. | For API or shared financial changes, update focused tests in both affected layers and run frontend test/build/lint plus backend pytest. |
+| Security | `backend/app/main.py` configures `allow_origins=["*"]` and `allow_credentials=True`. | The open development CORS policy should not be assumed safe for a production deployment. | Treat CORS as development configuration unless deployment requirements explicitly define restricted origins; do not add secrets or real environment files. |
+| Developer experience | The repository has no root, frontend, or backend `.dockerignore` file. | Docker builds may send generated dependencies and build artifacts in the context. | Before changing Docker setup, inspect build context exclusions and add a scoped `.dockerignore` only when verified as needed by the build. |
+
+### Findings deliberately excluded
+
+- No product roadmap or requested feature was inferred from the currently unused API endpoints.
+- No code-style preference was proposed unless it maps to an existing source, test, or configuration file.
+- No production deployment design was inferred from the local Docker Compose configuration.
