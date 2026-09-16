@@ -14,13 +14,12 @@ Estás trabajando en el proyecto de 4Geeks Academy:
 Lee primero estos archivos antes de modificar nada:
 
 1. `AGENTS.md`
-2. `CONTEXTO_PROYECTO_DASHBOARD_FINANCIERO.md`
-3. `README.md` y `README.es.md`
-4. Las reglas disponibles en `.agents/rules/`, si existen
-5. Las skills disponibles en `.agents/skills/`, si existen
-6. Los archivos de `memory-bank/`, si existe ese directorio
+2. `README.md` y `README.es.md`
+3. Las reglas disponibles en `.agents/rules/`, si existen
+4. Las skills disponibles en `.agents/skills/`, si existen
+5. Los archivos de `memory-bank/`, si existe ese directorio
 
-El contexto de `CONTEXTO_PROYECTO_DASHBOARD_FINANCIERO.md` es la referencia funcional principal, pero debes comprobar siempre el estado real del código antes de confiar en él.
+El código real, sus tests y los contratos OpenAPI son la referencia funcional principal. Comprueba su estado actual antes de confiar en la documentación.
 
 ---
 
