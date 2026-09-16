@@ -4,11 +4,12 @@
 Use this skill when adding or changing a FastAPI endpoint, query filter, aggregation, response model, comparison, alert, or business-type view in the financial metrics API.
 
 ## Inspect first
-- Read `AGENTS.md`, `.agents/rules/project-architecture.md`, `.agents/rules/financial-domain.md`, and `.agents/rules/validation-workflow.md`.
+- Read `INSTRUCCIONES_AGENTE.md` as the project requirements, then `AGENTS.md`, `.agents/rules/project-architecture.md`, `.agents/rules/financial-domain.md`, and `.agents/rules/validation-workflow.md`.
+- Review available skills and `memory-bank/` if present, then run `git status` before editing.
 - Inspect `backend/app/routes.py` for existing `Literal` types, Pydantic models, filtering helpers, aggregation helpers, and route patterns.
 - Inspect `backend/tests/test_routes.py` for endpoint and helper test conventions.
 - Inspect `backend/app/main.py` before changing middleware, router inclusion, or CORS.
-- Inspect the frontend callers and `CONTEXTO_PROYECTO_DASHBOARD_FINANCIERO.md` before changing a response contract.
+- Inspect the frontend callers and the current code before changing a response contract; do not invent fields from documentation.
 
 ## Implementation steps
 1. Identify the owning helper, model, and route before editing.
