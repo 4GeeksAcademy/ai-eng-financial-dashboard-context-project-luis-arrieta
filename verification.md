@@ -67,3 +67,28 @@ Date: 2026-09-16.
 - No product roadmap or requested feature was inferred from the currently unused API endpoints.
 - No code-style preference was proposed unless it maps to an existing source, test, or configuration file.
 - No production deployment design was inferred from the local Docker Compose configuration.
+
+## Phase 3: Rule Implementation and Trial
+
+Date: 2026-09-16.
+
+### Rule refinements
+
+- `.agents/rules/project-architecture.md` identifies the ownership boundary between FastAPI wiring, routes, frontend orchestration, transformations, and presentation.
+- `.agents/rules/financial-domain.md` ties formulas, inclusive dates, allowed values, and zero-income behavior to their backend and frontend implementations.
+- `.agents/rules/coding-conventions.md` ties type reuse, test location, generated-file hygiene, and documentation updates to existing repository patterns.
+- `.agents/rules/validation-workflow.md` maps validation choices to scripts, tests, Docker Compose, and cross-layer API dependencies.
+
+Each rule now includes scope, repository evidence, actionable workflow, restrictions, and validation guidance.
+
+### Small rule-guided task
+
+| Rule applied | Task | Evidence | Result |
+| --- | --- | --- | --- |
+| Developer-experience finding in `coding-conventions.md` and `validation-workflow.md` | Add scoped Docker build exclusions without changing application code. | `docker-compose.yml` uses `./frontend` and `./backend` as build contexts; no `.dockerignore` existed in either context. | Added `frontend/.dockerignore` and `backend/.dockerignore`; `docker compose build` completed successfully for both services. |
+
+### Observed validation
+
+- Docker reported a frontend build context of `2.00 kB` and a backend context of `1.24 kB` after the exclusions.
+- Both `COPY . .` Dockerfile steps completed and both images were built.
+- The trial did not add product features, change API contracts, or alter dashboard presentation.

@@ -3,6 +3,12 @@
 ## Scope
 This project is a financial metrics dashboard with a React + TypeScript frontend and a FastAPI backend. The main goal is to keep the UI, the data transformation layer, and the API contracts aligned.
 
+## Repository evidence
+- `frontend/src/App.tsx` fetches `/api/metrics`, maintains loading and error state, and composes the dashboard.
+- `frontend/vite.config.ts` proxies `/api` to `http://backend:8000` for local development.
+- `backend/app/main.py` creates the FastAPI application and includes the router defined in `backend/app/routes.py`.
+- `backend/app/routes.py` owns Pydantic response models, mock generation, filters, aggregates, and route decorators.
+
 ## Repository structure
 - `backend/app/`: API application code
   - `main.py`: FastAPI app bootstrap and middleware configuration
@@ -36,3 +42,9 @@ This project is a financial metrics dashboard with a React + TypeScript frontend
 - Keep date filtering inclusive.
 - Preserve API contracts unless the task explicitly changes them.
 - Validate any change against tests before calling it complete.
+
+## Agent workflow
+1. Locate the owner using the responsibilities above before editing.
+2. For API changes, inspect the Pydantic model, route decorator, relevant frontend type, and tests together.
+3. For UI changes, keep fetch orchestration in `App.tsx`, calculations in `lib/financial-utils.ts`, and presentation in `components/dashboard/`.
+4. Check the OpenAPI schema when changing an endpoint response or query parameter.

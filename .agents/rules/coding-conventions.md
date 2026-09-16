@@ -1,5 +1,14 @@
 # Coding Conventions Rule
 
+## Scope
+Use this rule for frontend, backend, tests, and configuration changes in the dashboard repository.
+
+## Repository evidence
+- `frontend/src/App.tsx` delegates derived values to `frontend/src/lib/financial-utils.ts` and visual rendering to `frontend/src/components/dashboard/`.
+- `backend/app/routes.py` uses Pydantic models and typed `Literal` aliases for API contracts.
+- `backend/tests/test_routes.py` and `frontend/src/lib/financial-utils.test.ts` keep tests close to their respective backend and frontend behavior.
+- `.gitignore` excludes real environment files and generated frontend and backend artifacts.
+
 ## General principles
 - Prefer existing patterns over creating new abstractions.
 - Reuse current types and models before introducing new ones.
@@ -22,3 +31,9 @@
 - Before calling work complete, run the relevant validation commands.
 - If a new financial rule is introduced, document it and update tests.
 - Avoid adding dependencies or external services without explicit requirement and documentation.
+
+## Agent workflow
+1. Inspect the target module and its closest test before changing code.
+2. Reuse current names, types, Pydantic models, and utility boundaries before adding an abstraction or dependency.
+3. Keep generated files, credentials, and real `.env` files out of commits.
+4. Document a behavioral or contract change in the affected rule or memory note.
