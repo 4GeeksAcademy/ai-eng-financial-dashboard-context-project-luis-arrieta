@@ -101,3 +101,12 @@ Date: 2026-09-16.
 - Verified every cited repository path and confirmed the API route count remains 9.
 - Recorded observed limitations only: mock data, calendar-dependent mock years, UI consumption limited to `/api/metrics`, open development CORS, and missing frontend component/fetch tests.
 - Excluded product roadmaps and unverified feature plans because the repository provides no evidence for them.
+
+## Post-delivery integration correction
+
+Date: 2026-09-16.
+
+- Observed that the Vite proxy returned HTTP 502 for `/api/metrics` even though the host could reach backend port 8000.
+- Verified the frontend container resolved `backend` but timed out over the Compose bridge, while `host.docker.internal:8000` returned the backend health response.
+- Added the `host-gateway` alias and `VITE_API_PROXY_TARGET` in `docker-compose.yml`; `frontend/vite.config.ts` reads that target and retains `http://backend:8000` as its default.
+- Recreated the stack and verified `http://localhost:5173/api/metrics` returns HTTP 200.

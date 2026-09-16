@@ -42,7 +42,7 @@ _Dashboard de métricas financieras con frontend en React + TypeScript y backend
 docker compose up --build
 ```
 
-El frontend usa por defecto el proxy de Vite para `/api`, así que no necesitas variables de entorno extra ni en desarrollo local ni en Codespaces.
+El frontend usa por defecto el proxy de Vite para `/api`. Docker Compose configura su destino mediante `VITE_API_PROXY_TARGET` para que el contenedor frontend alcance el backend a través del gateway del host Docker.
 Si necesitas apuntar a otro backend, copia `frontend/.env.example` como `.env` y define `VITE_API_BASE_URL`.
 
 - Frontend: http://localhost:5173

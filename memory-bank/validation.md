@@ -21,6 +21,7 @@ docker compose up --build
 - Docker Compose: frontend y backend construyeron y arrancaron correctamente.
 - Integracion HTTP: `/health`, `/api/metrics`, `/docs` y `http://localhost:5173/` respondieron con exito.
 - La Fase 3 valido `docker compose build` despues de anadir exclusiones de contexto para frontend y backend.
+- La integracion Docker valida `http://localhost:5173/api/metrics` a traves del proxy de Vite con respuesta HTTP 200.
 
 ## Comprobaciones obligatorias antes de cerrar un cambio
 

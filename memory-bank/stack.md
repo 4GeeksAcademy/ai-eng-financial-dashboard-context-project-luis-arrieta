@@ -27,6 +27,7 @@ Actualizado: 2026-09-16.
 
 - Docker Compose inicia los servicios `frontend` y `backend`.
 - El frontend publica el puerto 5173; el backend publica 8000 y 5678.
+- En Docker Compose, `VITE_API_PROXY_TARGET` dirige el proxy de Vite a `host.docker.internal:8000`; `extra_hosts` resuelve ese alias mediante `host-gateway`.
 - Los contextos de build son `frontend/` y `backend/` y tienen exclusiones propias en `.dockerignore`.
 - Comandos: `docker compose up --build`, `npm test`, `npm run build`, `npm run lint` y `pytest -q`.
 - Evidencia: `docker-compose.yml`, Dockerfiles, `.dockerignore` y `frontend/package.json`.

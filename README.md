@@ -42,7 +42,7 @@ _Financial metrics dashboard with a React + TypeScript frontend and a FastAPI ba
 docker compose up --build
 ```
 
-The frontend uses the Vite proxy for `/api` by default, so no extra environment variables are required in local development or Codespaces.
+The frontend uses the Vite proxy for `/api` by default. Docker Compose configures its proxy target through `VITE_API_PROXY_TARGET` so the frontend container can reach the backend through the Docker host gateway.
 If you need to target a different backend origin, copy `frontend/.env.example` to `.env` and set `VITE_API_BASE_URL`.
 
 - Frontend: http://localhost:5173
