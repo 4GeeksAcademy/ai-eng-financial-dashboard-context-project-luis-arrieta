@@ -10,7 +10,6 @@ This skill helps an agent work efficiently in the Financial Metrics Dashboard pr
 - User-facing goal: deliver a financial dashboard with KPIs, monthly summaries, and charts
 
 ## Where to look first
-- Project instructions: `INSTRUCCIONES_AGENTE.md`
 - Architecture and general guidance: `AGENTS.md`
 - Project rules: `.agents/rules/`
 - Available skills: `.agents/skills/`
@@ -37,7 +36,7 @@ If a change crosses these areas, apply the relevant implementation skill first a
 - Validate behavior with tests or local execution
 
 ## Workflow for an agent
-1. Read `INSTRUCCIONES_AGENTE.md` as the project requirements, then read `AGENTS.md`, applicable rules, skills, and `memory-bank/` if present.
+1. Read `AGENTS.md`, applicable rules, skills, and `memory-bank/` if present before acting.
 2. Check `git status`, inspect the repository structure, and identify the owning backend route, frontend utility, or component.
 3. Verify the current code and related tests before trusting documentation or changing a contract.
 4. Update tests and documentation alongside any behavior or API change.

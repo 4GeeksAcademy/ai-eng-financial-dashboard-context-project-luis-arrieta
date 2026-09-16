@@ -4,7 +4,7 @@
 Use this skill when adding a KPI, aggregate, derived financial value, or chart metric to the dashboard. This includes totals, net/profit values, margins, monthly values, and other calculations based on financial movements.
 
 ## Inspect first
-- Read `INSTRUCCIONES_AGENTE.md` as the project requirements, then `AGENTS.md`, applicable files in `.agents/rules/`, available skills, and `memory-bank/` if present.
+- Read `AGENTS.md`, applicable files in `.agents/rules/`, available skills, and `memory-bank/` if present.
 - Run `git status` and inspect the current code before relying on documentation.
 - Inspect `frontend/src/lib/financial-types.ts` for existing domain and result types.
 - Inspect `frontend/src/lib/financial-utils.ts` and `frontend/src/lib/financial-utils.test.ts` for frontend calculations and test patterns.
@@ -16,7 +16,7 @@ Use this skill when adding a KPI, aggregate, derived financial value, or chart m
 2. Decide whether the metric belongs in backend aggregation, frontend transformation, or both. Keep API aggregation in `backend/app/routes.py`, reusable UI calculations in `frontend/src/lib/financial-utils.ts`, and rendering in dashboard components.
 3. Reuse existing `FinancialMovement`, Pydantic models, TypeScript types, and endpoint response shapes where possible.
 4. Add focused tests for normal values, empty data, zero income, and any date or business-type filters involved.
-5. Update the relevant rule or `INSTRUCCIONES_AGENTE.md`-aligned project documentation when the metric introduces a new concept, formula, or response field.
+5. Update the relevant rule or project documentation when the metric introduces a new concept, formula, or response field.
 6. Keep rounding at the presentation or response boundary and avoid rounding intermediate values repeatedly.
 
 ## Financial constraints

@@ -4,7 +4,7 @@ Este directorio conserva hechos operativos verificados que ayudan a otro agente 
 
 ## Fuente de verdad
 
-- Requisitos y flujo de trabajo: `INSTRUCCIONES_AGENTE.md`.
+- Requisitos y flujo de trabajo: `AGENTS.md`, `.agents/rules/` y `.agents/skills/`.
 - Implementacion y contratos: codigo actual, tests y esquema OpenAPI de FastAPI.
 - Reglas y procedimientos reutilizables: `.agents/rules/` y `.agents/skills/`.
 

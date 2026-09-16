@@ -4,7 +4,7 @@
 Use this skill before considering a dashboard change complete, especially after changing financial calculations, API contracts, filters, loading/error behavior, or chart data.
 
 ## Inspect first
-- Read `INSTRUCCIONES_AGENTE.md` as the project requirements, then `AGENTS.md`, all applicable files in `.agents/rules/`, available skills, and `memory-bank/` if present.
+- Read `AGENTS.md`, all applicable files in `.agents/rules/`, available skills, and `memory-bank/` if present.
 - Check `git status --short --branch` and identify unrelated existing changes.
 - Read the changed files and their associated tests before selecting commands.
 - For backend changes, inspect `backend/app/routes.py` and `backend/tests/test_routes.py`.
