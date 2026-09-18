@@ -1,6 +1,6 @@
 # Validation Record
 
-Actualizado: 2026-09-16.
+Actualizado: 2026-09-18.
 
 ## Comandos del proyecto
 
@@ -14,7 +14,7 @@ docker compose up --build
 
 ## Ultima validacion verificada
 
-- Frontend tests: 6 pruebas correctas.
+- Frontend tests: 9 pruebas correctas, incluidas 3 de estados de `App` con Testing Library y `jsdom`.
 - Frontend build: correcto.
 - Frontend lint: correcto.
 - Backend tests: 15 pruebas correctas.
@@ -22,6 +22,7 @@ docker compose up --build
 - Integracion HTTP: `/health`, `/api/metrics`, `/docs` y `http://localhost:5173/` respondieron con exito.
 - La Fase 3 valido `docker compose build` despues de anadir exclusiones de contexto para frontend y backend.
 - La integracion Docker valida `http://localhost:5173/api/metrics` a traves del proxy de Vite con respuesta HTTP 200.
+- La prueba adicional de navegador sugerida por `webapp-testing` no se ejecuto: el entorno no tiene instalado Python Playwright. La cobertura de estados de interfaz se realizo con Vitest y Testing Library.
 
 ## Comprobaciones obligatorias antes de cerrar un cambio
 
@@ -33,6 +34,6 @@ docker compose up --build
 
 ## Avisos conocidos
 
-- El build de Vite informa que el bundle JavaScript supera 500 kB; no bloquea la compilacion.
+- Recharts permanece separado mediante carga diferida; la ultima build no informo advertencias de bundle.
 - Pytest emite una advertencia de deprecacion de Starlette TestClient con `httpx`; los tests siguen pasando.
 - La verificacion de handover, hallazgos y prueba de reglas esta registrada en `verification.md`.

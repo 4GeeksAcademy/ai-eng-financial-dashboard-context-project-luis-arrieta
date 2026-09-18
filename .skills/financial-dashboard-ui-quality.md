@@ -4,7 +4,7 @@
 Garantizar que el dashboard financiero heredado mantenga una experiencia accesible, legible y eficiente para usuarios reales, sin perder la coherencia de negocio y la arquitectura ya existente del proyecto.
 
 ## Entradas
-- Especificación del proyecto: `financial-dashboard-2.md`
+- Especificación del proyecto: `financial-dashboard-3.md`
 - Arquitectura real del repositorio: `frontend/src/`, `backend/app/`, `memory-bank/`
 - Reglas activas: `.agents/rules/`
 - Estado funcional conocido y validado del dashboard
@@ -22,7 +22,8 @@ Garantizar que el dashboard financiero heredado mantenga una experiencia accesib
    - metadatos HTML básicos
    - carga diferida de componentes pesados
 4. Mantener las reglas del dominio financiero y no reescribir la lógica de negocio.
-5. Verificar con tests, lint y build del frontend antes de cerrar.
+5. Añadir o actualizar pruebas de componentes para los estados de carga, error y vacío cuando se modifique la interfaz.
+6. Verificar con tests, lint y build del frontend antes de cerrar.
 
 ## Salida esperada
 - UI más accesible y comprensible.
@@ -34,6 +35,8 @@ Garantizar que el dashboard financiero heredado mantenga una experiencia accesib
 - La app conserva su estructura actual y no se reescribe desde cero.
 - No aparecen errores de lint o build causados por el ajuste.
 - Los elementos visuales y los mensajes cargan con estado claro y accesible.
+- Los gráficos tienen un nombre accesible y una alternativa textual de los datos mostrados.
+- Las pruebas de interfaz cubren carga, error y respuesta vacía de `GET /api/metrics` cuando esos estados cambian.
 - La mejora se puede explicar con referencia a una evidencia real del repo.
 
 ## Restricciones
