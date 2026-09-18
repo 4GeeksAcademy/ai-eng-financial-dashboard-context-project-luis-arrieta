@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, startTransition, useEffect, useState } from "react";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { KPIRow } from "@/components/dashboard/kpi-row";
 import {
@@ -44,16 +44,21 @@ function App() {
   useEffect(() => {
     fetchFinancialData()
       .then((movements) => {
-        setMetrics(computeKPIs(movements));
-        setMonthlyData(computeMonthlyData(movements));
-        setPeriodLabel(formatPeriodLabel(movements));
+        const nextMetrics = computeKPIs(movements);
+        const nextMonthlyData = computeMonthlyData(movements);
+        const nextPeriodLabel = formatPeriodLabel(movements);
+
+        startTransition(() => {
+          setMetrics(nextMetrics);
+          setMonthlyData(nextMonthlyData);
+          setPeriodLabel(nextPeriodLabel);
+          setLoading(false);
+        });
       })
       .catch(() => {
         setError(
           "No se pudo cargar la informacion financiera. Revisa la API de backend.",
         );
-      })
-      .finally(() => {
         setLoading(false);
       });
   }, []);
