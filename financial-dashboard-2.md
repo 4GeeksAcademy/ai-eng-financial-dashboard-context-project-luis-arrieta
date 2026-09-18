@@ -6,7 +6,7 @@
 - **Proyecto:** Enhancing development with agent skills - Financial dashboard
 - **Slug:** `company-financial-dashboard-skills-project`
 - **Repositorio:** el mismo repositorio heredado del proyecto de contexto del dashboard financiero
-- **Rama obligatoria:** `feature/agent-skills`
+- **Rama obligatoria:** `feature/frontend-specs`
 - **Rama base del Pull Request:** `main`
 
 > **Importante:** este proyecto continúa sobre el mismo repositorio del proyecto de contexto. No hay que crear otro fork ni otro repositorio.
@@ -74,10 +74,10 @@ git pull origin main
 Después crea y utiliza la rama exigida por el proyecto:
 
 ```bash
-git switch -c feature/agent-skills
+git switch -c feature/frontend-specs
 ```
 
-Todos los cambios de este proyecto deben quedar en `feature/agent-skills`, no directamente en `main`.
+Todos los cambios de este proyecto deben quedar en `feature/frontend-specs`, no directamente en `main`.
 
 ---
 
@@ -305,13 +305,13 @@ pytest -q
 
 ## 7. Rama y commits
 
-- [ ] Los cambios están en la rama `feature/agent-skills`.
+- [ ] Los cambios están en la rama `feature/frontend-specs`.
 - [ ] No se trabajó directamente sobre `main` como rama de entrega.
 - [ ] Los commits son claros y trazables.
 - [ ] Idealmente existe un commit por cada skill aplicada.
 - [ ] Los mensajes de commit identifican la skill o el tipo de mejora realizado.
 - [ ] La rama fue subida a GitHub.
-- [ ] Se abrió un Pull Request desde `feature/agent-skills` hacia `main`.
+- [ ] Se abrió un Pull Request desde `feature/frontend-specs` hacia `main`.
 
 ## 8. Naturaleza del trabajo
 
@@ -328,11 +328,11 @@ pytest -q
 
 # Entrega
 
-1. Confirma que todo el trabajo está en `feature/agent-skills`.
+1. Confirma que todo el trabajo está en `feature/frontend-specs`.
 2. Sube la rama a GitHub:
 
 ```bash
-git push -u origin feature/agent-skills
+git push -u origin feature/frontend-specs
 ```
 
 3. Abre un Pull Request contra `main`.
@@ -345,7 +345,7 @@ La URL del Pull Request es la entrega esperada, no solamente la URL del reposito
 ## Checklist final
 
 ```text
-[ ] Rama feature/agent-skills creada y utilizada
+[ ] Rama feature/frontend-specs creada y utilizada
 [ ] memory-bank anterior comprobado
 [ ] accessibility descubierta, cargada y aplicada
 [ ] vercel-react-best-practices descubierta, cargada y aplicada
