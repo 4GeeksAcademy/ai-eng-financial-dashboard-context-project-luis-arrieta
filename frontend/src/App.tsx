@@ -64,6 +64,15 @@ function App() {
       aria-busy={loading}
       aria-live="polite"
     >
+      {loading ? (
+        <span
+          className="sr-only"
+          role="status"
+          aria-label="Cargando datos financieros"
+        >
+          Cargando datos financieros
+        </span>
+      ) : null}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8">
           <DashboardHeader period={periodLabel} />
@@ -78,17 +87,21 @@ function App() {
             </div>
           ) : null}
 
-          <section aria-label="Indicadores clave de rendimiento">
+          <section aria-label="Indicadores clave de rendimiento" role="region">
             <KPIRow metrics={metrics} loading={loading} />
           </section>
 
           <section
             aria-label="Gráficos financieros"
+            role="region"
             className="grid grid-cols-1 gap-4 xl:grid-cols-2"
           >
             <Suspense
               fallback={
-                <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
+                <div
+                  className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground"
+                  role="status"
+                >
                   Cargando gráficos…
                 </div>
               }
@@ -97,7 +110,10 @@ function App() {
             </Suspense>
             <Suspense
               fallback={
-                <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
+                <div
+                  className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground"
+                  role="status"
+                >
                   Cargando margen de beneficio…
                 </div>
               }
