@@ -63,7 +63,7 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
     )
   }
 
-  const hasData = data.some((d) => d.profitPercent !== 0)
+  const hasData = data.length > 0
 
   const descriptionId = "profit-percent-chart-description"
   const titleId = "profit-percent-chart-title"

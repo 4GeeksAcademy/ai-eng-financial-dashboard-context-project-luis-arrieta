@@ -60,4 +60,21 @@ describe("App", () => {
     expect(screen.getByLabelText("Profit: $0")).toBeInTheDocument();
     expect(screen.getByLabelText("Profit Margin: 0.0%")).toBeInTheDocument();
   });
+
+  it("renders valid zero margins as chart data", async () => {
+    const actual = await vi.importActual<typeof import("@/components/dashboard/profit-percent-chart")>(
+      "@/components/dashboard/profit-percent-chart",
+    );
+    const { ProfitPercentChart } = actual;
+    const zeroMarginData = [
+      { month: "Jan", income: 100, outcome: 100, profit: 0, profitPercent: 0 },
+      { month: "Feb", income: 120, outcome: 120, profit: 0, profitPercent: 0 },
+    ];
+
+    render(<ProfitPercentChart data={zeroMarginData} />);
+
+    expect(screen.queryByText("No data available to display")).not.toBeInTheDocument();
+    expect(screen.getByRole("figure")).toBeInTheDocument();
+    expect(screen.getByText("Profit Margin %")).toBeInTheDocument();
+  });
 });
