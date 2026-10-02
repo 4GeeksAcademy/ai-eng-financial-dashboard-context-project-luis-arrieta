@@ -56,11 +56,17 @@ export function KPICard({ label, value, helperText, icon: Icon, variant, loading
           <span className="text-sm font-medium text-muted-foreground tracking-wide uppercase text-pretty">
             {label}
           </span>
-          <span className={cn('p-1.5 rounded-lg', styles.badge)}>
+          <span
+            className={cn('p-1.5 rounded-lg', styles.badge)}
+            aria-hidden="true"
+            title={label}
+          >
             <Icon size={16} className={styles.icon} />
           </span>
         </div>
-        <p className="text-3xl font-semibold tracking-tight text-foreground">{value}</p>
+        <p className="text-3xl font-semibold tracking-tight text-foreground" aria-label={`${label}: ${value}`}>
+          {value}
+        </p>
         <p className="text-xs text-muted-foreground leading-relaxed">{helperText}</p>
       </CardContent>
     </Card>
